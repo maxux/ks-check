@@ -11,8 +11,8 @@ class Kimsufi {
 	);
 
 	private $base = 'https://ws.ovh.com/dedicated/r2/ws.dispatcher/'.
-					'getElapsedTimeSinceLastDelivery?'.
-					'callback=Request.JSONP.request_map.request_1&params=';
+	                'getElapsedTimeSinceLastDelivery?'.
+	                'callback=Request.JSONP.request_map.request_1&params=';
 
 	private $url    = null;
 	private $model  = null;
