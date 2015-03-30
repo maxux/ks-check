@@ -7,5 +7,5 @@ check if a given Kimsufi is available and send pushbullet notification
     $ks = new Kimsufi('KS-3', 'XXXXXXX');
     ?>
 
-* KS-3 is kimsufi model (see list on the class file)
-* XXXXXX is a pushbullet api key
+* `KS-3` is kimsufi model (see list on the class file)
+* `XXXXXX` is a pushbullet api key
