@@ -25,7 +25,7 @@ class Kimsufi {
 		
 		if($this->check()) {
 			echo "[+] kimsufi available !\n";
-			$this->notify();
+			$this->notify($this->model);
 			
 		} else echo "[-] kimsufi unavailable\n";
 	}
@@ -38,9 +38,13 @@ class Kimsufi {
 
 		$data = json_decode($data);
 		
-		foreach($data->answer->availability as $item)
+		foreach($data->answer->availability as $item) {
+			if(!in_array($item->reference, $this->models))
+				continue;
+			
 			if($item->reference == $this->models[$this->model])
 				return $this->parse($item);
+		}
 		
 		die("[-] kimsufi not found\n");
 	}
@@ -53,13 +57,13 @@ class Kimsufi {
 		return false;
 	}
 	
-	function notify() {
+	function notify($model) {
 		echo "[+] sending notification\n";
 		
 		$data = array(
 			'type'  => 'note',
-			'title' => $this->model,
-			'body'  => $this->model.' available'
+			'title' => $model,
+			'body'  => $model.' available'
 		);
 		
 		$ch = curl_init();
